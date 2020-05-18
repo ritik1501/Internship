@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.urls import include
+from django.contrib import messages
 from django.http import HttpResponse
 import pickle, requests, json
+from covid.models import UserData 
 
 # Create your views here.
 def home(request):
@@ -14,7 +16,11 @@ def test(request):
         cough = int(request.POST['cough'])
         throat = int(request.POST['throat'])
         diffBreath = int(request.POST['diffBreath'])
-        model = request.POST['model']       
+        model = request.POST['model']   
+
+        if fever<0 or fever>20 or cough<0 or cough>20 or throat<0 or throat>20 or diffBreath<0 or diffBreath>20:
+            messages.error(request, "Please enter the deatils between 1 to 20.")
+            return render(request, 'index.html')  
         
         model_file = {'random':'RF48.pkl', 'decision':'des_update3.pickle', 'lr':'LR48.pkl', 'knn':'knn48.pkl'}
         file = open(f'D:\\Internship\\Models\\{model_file[model]}','rb')
@@ -26,6 +32,10 @@ def test(request):
         infProba = infProba*100
         print(infProba)
         inf = {"infProba": infProba}
+
+        obj = UserData(name=name, fever=fever, cough=cough, throat=throat, breathing=diffBreath, result=infProba)
+        obj.save()
+
         return render(request, 'show.html', inf)
     return HttpResponse("There is an ERROR!!!!!!!!!!!!!")
 

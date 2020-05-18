@@ -4,12 +4,14 @@
 {% block home %}active{% endblock home %}
 
 {% block body %}
-      <div class="alert alert-primary btn-outline-success show" role="alert">
-        <strong>COVID-19 !!!</strong> A Simple form to check the probability of you getting corona affected...
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
 
  
       <div class="container"> 
@@ -54,6 +56,7 @@
             <button class="btn btn-primary" type="submit">Submit</button>
           </form>
       </div>
+
 
       
 
