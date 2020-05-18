@@ -1,0 +1,63 @@
+{% extends 'navbar.html' %}
+{% block title %}Home{% endblock title %}
+     
+{% block home %}active{% endblock home %}
+
+{% block body %}
+      <div class="alert alert-primary btn-outline-success show" role="alert">
+        <strong>COVID-19 !!!</strong> A Simple form to check the probability of you getting corona affected...
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+ 
+      <div class="container"> 
+          <h2 class="text-center my-5">COVID-19 Self-Test</h2> 
+          <form action="/home/test" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+                <label for="name">Enter Name: </label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="For eg.Bharat">
+            </div>
+            <div class="form-group">
+              <label for="fever">Enter value of Fever: </label>
+              <input type="text" class="form-control" id="fever" name="fever" placeholder="For eg.15">
+            </div>
+
+            <div class="form-group">
+                <label for="cough">Enter value of Cough: </label>
+                <input type="number" class="form-control" id="cough" name="cough" placeholder="For eg.15">
+            </div>
+
+            <div class="form-group">
+              <label for="throat">Enter value of Sore Throat:</label>
+              <input type="number" class="form-control" id="throat" name="throat" placeholder="For eg.15">
+            </div>
+
+            <div class="form-group">
+                <label for="diffBreath">Enter value of Breathing Difficulty</label>
+                <input type="number" class="form-control" id="diffBreath" name="diffBreath" placeholder="For eg.15">
+            </div>
+
+            <div class="form-group">
+                <label for="model">Choose the model:</label>
+                <select class="form-control custom-select" id="model" name="model">
+                  <option value="random">Random Forest</option>
+                  <option value="knn">KNN </option>
+                  <option value="decision">Decision Tree </option>
+                  <option value="lr">Logistic Regression </option>
+                </select>
+            </div>
+
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+      </div>
+
+      
+
+{% endblock body %}
+
+
+

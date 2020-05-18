@@ -1,0 +1,85 @@
+{% extends 'navbar.html' %}
+
+{% block title %}DashBoard{% endblock title %}
+
+{% block dashboard %}active{% endblock dashboard %}
+
+{% block body %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card my-3" style="width: 18rem; background-color: red;">
+                <img class="card-image-top"
+                    src="https://cdn.cnn.com/cnnnext/dam/assets/200130165125-corona-virus-cdc-image-super-tease.jpg"
+                    style="height: 200px; width: 287px;">
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">Confirmed Cases</h5>
+                        <p class="card-text">Total Confirmed Cases in World</p>
+                        <a class="btn btn-danger"> {{ confirmed }} </a>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card my-3" style="width: 18rem; background-color: blue;">
+                <img src="https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/corona_505_150220041149.jpg?size=1200:675"
+                    style="height: 200px; width: 287px;">
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">Active Cases</h5>
+                        <p class="card-text">Total Active Cases in World</p>
+                        <a class="btn btn-primary"> {{ active }} </a>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card my-3" style="width: 18rem; background-color: green;">
+                <img src="https://cimg0.ibsrv.net/cimg/www.woundcarecenters.org/728x426_85/280/Infected-wounds-13280.jpg"
+                    style="height: 200px; width: 287px;">
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">Recovered Cases</h5>
+                        <p class="card-text">Total Recovered Cases in World</p>
+                        <a class="btn btn-success"> {{ recovered }} </a>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card my-3" style="width: 18rem; background-color: gray;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPPvCItSoh7hKHSPhBeRhZ1bbg2jahpch-jfCjFXG9ORBQ9Mkz&usqp=CAU"
+                    style="height: 200px; width: 287px;">
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">Death </h5>
+                        <p class="card-text">Total Deaths in World</p>
+                        <a class="btn btn-success"> {{ death }} </a>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center><p>Last Updated: {{ lastUpdate }} </p></center>
+    <hr><center><h3>Search for your Country</h3></center>
+    <form action="/home/search" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" name="search">
+            <div class="input-group-append">
+                <button class="btn btn-success" type="submit">Go</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+
+{% endblock body %}

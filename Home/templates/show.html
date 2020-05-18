@@ -1,0 +1,26 @@
+{% extends 'navbar.html' %}
+
+{% block title %} Result {% endblock title %}   
+{% block body %}
+  
+      <div class="container">
+        
+          <h2 class="text-center my-5">COVID-19 Self-Test</h2><br><br>
+          <center>
+          <div class="card" style="width: 18rem;">
+          <img class="card-image-top" src="https://cdn.cnn.com/cnnnext/dam/assets/200130165125-corona-virus-cdc-image-super-tease.jpg" style="width: 287px; height:200px ;">  
+          <div class="card-body">
+              <h5 class="card-title">Probability of Corona Virus</h5>
+              <p class="card-text">Patient Probability of corona virus is {{ infProba }} %</p>
+              <a href="/home/" class="btn btn-primary">Go Back</a>
+            </div>
+          </div></center>
+      </div>
+
+      {% endblock body %}
+
+
+
+
+
+
