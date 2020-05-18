@@ -6,10 +6,10 @@ from sklearn import preprocessing
 import pickle
 
 
-file = "data.csv"
+file = "symptoms.csv"
 data = pd.read_csv(file, sep=',', header=0)
 con = preprocessing.LabelEncoder()
-predict = 'infected'
+predict = 'Infected with Covid19'
 
 X = np.array(data.drop([predict], 1))
 Y = np.array(con.fit_transform(list(data[predict])))
@@ -35,20 +35,10 @@ print(acc)
 
 prediction = clf_entropy.predict(X_test)
 
-'''for i in range(len(prediction)):
-    print(prediction[i], '  ', Y_test[i])'''
+for i in range(len(prediction)):
+    print(prediction[i], '  ', Y_test[i])
 
 
 manual_data = np.array([[7, 9, 10, 12]])
 manual_predict = clf_entropy.predict(manual_data)
 print("\n\nRESULT :  ", manual_predict)
-
-
-
-
-
-
-
-
-
-
