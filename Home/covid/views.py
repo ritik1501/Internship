@@ -16,13 +16,13 @@ def test(request):
         diffBreath = int(request.POST['diffBreath'])
         model = request.POST['model']       
         
-        model_file = {'random':'RF48.pkl', 'decision':'decision48.pkl', 'lr':'LR48.pkl', 'knn':'knn48.pkl'}
+        model_file = {'random':'RF48.pkl', 'decision':'des_update3.pickle', 'lr':'LR48.pkl', 'knn':'knn48.pkl'}
         file = open(f'D:\\Internship\\Models\\{model_file[model]}','rb')
         clf = pickle.load(file)
         file.close()
 
         inputfeatures = [cough, fever, throat, diffBreath]
-        infProba = clf.predict([inputfeatures])[0]
+        infProba = clf.predict_proba([inputfeatures])[0][1]
         infProba = infProba*100
         print(infProba)
         inf = {"infProba": infProba}
