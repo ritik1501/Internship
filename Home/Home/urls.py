@@ -21,5 +21,8 @@ from covid import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('covid.urls')),
+    path('form/', views.form, name='form'),
+    path('form/test/', views.formTest, name='formTest'),
+    path('search/', views.search, name='search'),
     path('', views.dashboard, name='dashboard'),
 ]

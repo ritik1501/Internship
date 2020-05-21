@@ -69,7 +69,7 @@
     <center><p>Last Updated: {{ lastUpdate }} </p></center>
 
     <hr><center><h3>Search for your Country</h3></center>
-    <form action="/home/search" method="post">
+    <form action="/search/" method="post">
     {% csrf_token %}
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search" name="search">

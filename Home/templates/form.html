@@ -1,0 +1,162 @@
+{% extends 'navbar.html' %}
+{% block title %}Form{% endblock title %}
+
+{% block form %}active{% endblock form %}
+
+{% block body %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+
+<div class="container mb-5">
+    <h2 class="text-center my-5">COVID-19 Self-Test</h2>
+    <form action="/form/test/" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Enter your Name: </label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="For eg.Bharat" >
+        </div>
+
+        <div class="form-group">
+            <label for="age">Enter your Age: </label>
+            <input type="number" class="form-control" id="age" name="age" placeholder="For eg.25" >
+        </div>
+
+        <div class="form-group">
+            <label for="fever">Enter value of Fever: </label>
+            <input type="text" class="form-control" id="fever" name="fever" placeholder="For eg.15">
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="cough">Enter your Gender: </label>
+                    <select class="custom-select" name="gender">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="cough">Enter value of Cough: </label>
+                    <select class="custom-select" name="cough">
+                        <option value="0">No Symptoms</option>
+                        <option value="1">Having Cough</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="throat">Enter value of Sore Throat:</label>
+                    <select class="custom-select" name="throat">
+                        <option value="0">No Symptoms</option>
+                        <option value="1">Having Sore Throat</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Feeling Weakness</label>
+                    <select class="custom-select" name="weakness">
+                        <option value="0">No Symptoms</option>
+                        <option value="1">Feeling Tired</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Breathing Difficulty</label>
+                    <select class="custom-select" name="diffBreath">
+                        <option value="0">No Difficulty</option>
+                        <option value="1">Yes</option>
+                    </select>                
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Drowsiness Problem</label>
+                    <select class="custom-select" name="drowsiness">
+                        <option value="0">No Problem</option>
+                        <option value="1">Yes</option>
+                    </select>                
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Pain in Chest</label>
+                    <select class="custom-select" name="pain">
+                        <option value="0">No Pain</option>
+                        <option value="1">Feeling Pain</option>
+                    </select>                
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Travel history</label>
+                    <select class="custom-select" name="travel">
+                        <option value="0">No history</option>
+                        <option value="1">Yes Visited</option>
+                    </select>                
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Symptoms Progressed</label>
+                    <select class="custom-select" name="symptoms">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>                
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Blood Pressure</label>
+                    <select class="custom-select" name="blood">
+                        <option value="0">Stable</option>
+                        <option value="1">High Blood Pressure</option>
+                    </select>                
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="diffBreath">Change in Appetide</label>
+                    <select class="custom-select" name="appetide">
+                        <option value="0">No Symptoms</option>
+                        <option value="1">Yes</option>
+                    </select>                
+                </div>
+            </div>        
+
+        </div>
+
+        <div class="form-group">
+            <label for="model">Choose the model:</label>
+            <select class="form-control custom-select" id="model" name="model">
+                <option value="random">Random Forest</option>
+                <option value="knn">KNN </option>
+                <option value="decision">Decision Tree </option>
+                <option value="lr">Logistic Regression </option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock body %}
