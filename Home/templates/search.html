@@ -6,6 +6,16 @@
 
 {% block body %}
 
+<style>
+    body {
+        background: url('https://img.freepik.com/free-vector/abstract-technology-particle-background_52683-25766.jpg?size=626&ext=jpg') no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+</style>
+
 <div class="container my-5">
     <div class="row">
         <div class="col-md-3">
@@ -66,9 +76,9 @@
         </div>
     </div>
 
-    <center><p>Last Updated: {{ lastUpdate }} </p></center>
+    <center><p style="color:white;">Last Updated: {{ lastUpdate }} </p></center>
 
-    <hr><center><h3>Search for your Country</h3></center>
+    <hr><center><h3 style="color:white;">Search for your Country</h3></center>
     <form action="/search/" method="post">
     {% csrf_token %}
         <div class="input-group mb-3">
@@ -79,7 +89,7 @@
         </div>
     </form>
 
-    <hr><center><h3>Result for {{ state }}</h3></center>
+    <hr><center><h3 style="color:white;">Result for {{ state }}</h3></center>
 
     <div class="row">
         <div class="col-md-3">

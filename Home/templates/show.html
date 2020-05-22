@@ -3,6 +3,17 @@
 {% block title %} Result {% endblock title %}
 {% block body %}
 
+
+<style>
+    body {
+        background: url('https://images-na.ssl-images-amazon.com/images/I/61o%2BSA8L7cL._SL1000_.jpg') no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+</style>
+
 {% for message in messages %}
 <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
   <strong>Message: </strong> {{ message }}

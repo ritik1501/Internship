@@ -84,41 +84,43 @@ def form(request):
 
 def formTest(request):
     if request.method=='POST':
+        box = {'cough':0, 'throat':0, 'weakness':0, 'diffBreath':0, 'drowsiness':0, 'pain':0, 'blood':0, 'appetide':0}
         name = request.POST['name']
-        age = int(request.POST['age'])
         fever = float(request.POST['fever'])
+        age = int(request.POST['age'])
         gender = int(request.POST['gender'])
-        cough = int(request.POST['cough'])
-        throat = int(request.POST['throat'])
-        weakness = int(request.POST['weakness'])
-        diffBreath = int(request.POST['diffBreath'])
-        drowsiness = int(request.POST['drowsiness'])
-        pain = int(request.POST['pain'])
         travel = int(request.POST['travel'])
         symptoms = int(request.POST['symptoms'])
-        blood = int(request.POST['blood'])
-        appetide = int(request.POST['appetide'])
         model = request.POST['model']
+       
+        checkb = request.POST.getlist('checks[]')
+        if not len(checkb)==0:
+            for i in checkb:
+                box[i]=1
+                print(box[i])
 
-        if age>150 or fever<95.0 or fever>105.0:
-            messages.error(request, "Please enter valid details.")
-            return render(request, 'index.html') 
-        
-        model_file = {'random':'RF148.pkl', 'decision':'RF148.pickle', 'lr':'LR148.pkl', 'knn':'knn148.pkl'}
+        model_file = {'random':'RF148.pkl', 'decision':'des_symptoms.pickle', 'lr':'LR148.pkl', 'knn':'knn148.pkl'}
         file = open(f'static\\Models\\{model_file[model]}','rb')
         clf = pickle.load(file)
         file.close()
 
-        inputfeatures = [age,gender,fever,cough,throat,weakness,diffBreath,drowsiness,pain,travel,symptoms,blood,appetide]
+        inputfeatures = [age,gender,fever,box['cough'],box['throat'],box['weakness'],box['diffBreath'],box['drowsiness'],box['pain'],travel,symptoms,box['blood'],box['appetide']]
         info = clf.predict_proba([inputfeatures])
         infProba = info[0][1]+info[0][2]
         infProba = infProba*100
         inf = {"infProba": round(infProba,2)}
         result = clf.predict([inputfeatures])[0]
 
-        obj = LargeData(name=name, age=age, fever=fever, gender=gender, cough=cough, throat=throat, weakness=weakness, diffBreath=diffBreath, drowsiness=drowsiness, pain=pain, travel=travel, symptoms=symptoms, blood=blood, appetide=appetide, result=result)
+        obj = LargeData(name=name, age=age, fever=fever, gender=gender, cough=box['cough'], throat=box['throat'], weakness=box['weakness'], diffBreath=box['diffBreath'], drowsiness=box['drowsiness'], pain=box['pain'], travel=travel, symptoms=symptoms, blood=box['blood'], appetide=box['appetide'], result=result)
         obj.save()
 
-        messages.success(request, "Your Result is Generated")
+        if int(infProba)>80:
+            messages.error(request, "You are at high risk")
+        elif int(infProba)>60 or int(infProba)<81:
+            messages.warning(request, "You are at low risk")
+        else:
+            messages.success(request, "Your Result is Generated")
         return render(request, 'show.html', inf)
-    return HttpResponse('There is an ERROR!!!!!!!!!!!!!!!!!!!!!!!111')
+    return render(request, 'error.html')
+        
+

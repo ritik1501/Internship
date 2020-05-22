@@ -14,141 +14,136 @@
 {% endfor %}
 
 
+<style>
+    body {
+        background: url('https://cdn.cjr.org/wp-content/uploads/2019/07/AdobeStock_100000042-e1563305717660-686x371.jpeg') no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+</style>
+
+
 <div class="container mb-5">
-    <h2 class="text-center my-5">COVID-19 Self-Test</h2>
+    <h2 class="text-center my-5" style="color: white;">COVID-19 Self-Test</h2>
     <form action="/form/test/" method="POST">
         {% csrf_token %}
         <div class="form-group">
-            <label for="name">Enter your Name: </label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="For eg.Bharat" >
+            <label style="color:white;" for="name">Enter your Name: </label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="For eg.Bharat" required>
         </div>
 
         <div class="form-group">
-            <label for="age">Enter your Age: </label>
-            <input type="number" class="form-control" id="age" name="age" placeholder="For eg.25" >
+            <label style="color:white;" for="age">Enter your Age: </label>
+            <input type="number" class="form-control" id="age" name="age" placeholder="For eg.25" required>
         </div>
 
         <div class="form-group">
-            <label for="fever">Enter value of Fever: </label>
-            <input type="text" class="form-control" id="fever" name="fever" placeholder="For eg.15">
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="cough">Enter your Gender: </label>
-                    <select class="custom-select" name="gender">
-                        <option value="0">Male</option>
-                        <option value="1">Female</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="cough">Enter value of Cough: </label>
-                    <select class="custom-select" name="cough">
-                        <option value="0">No Symptoms</option>
-                        <option value="1">Having Cough</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="throat">Enter value of Sore Throat:</label>
-                    <select class="custom-select" name="throat">
-                        <option value="0">No Symptoms</option>
-                        <option value="1">Having Sore Throat</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Feeling Weakness</label>
-                    <select class="custom-select" name="weakness">
-                        <option value="0">No Symptoms</option>
-                        <option value="1">Feeling Tired</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Breathing Difficulty</label>
-                    <select class="custom-select" name="diffBreath">
-                        <option value="0">No Difficulty</option>
-                        <option value="1">Yes</option>
-                    </select>                
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Drowsiness Problem</label>
-                    <select class="custom-select" name="drowsiness">
-                        <option value="0">No Problem</option>
-                        <option value="1">Yes</option>
-                    </select>                
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Pain in Chest</label>
-                    <select class="custom-select" name="pain">
-                        <option value="0">No Pain</option>
-                        <option value="1">Feeling Pain</option>
-                    </select>                
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Travel history</label>
-                    <select class="custom-select" name="travel">
-                        <option value="0">No history</option>
-                        <option value="1">Yes Visited</option>
-                    </select>                
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Symptoms Progressed</label>
-                    <select class="custom-select" name="symptoms">
-                        <option value="0">No</option>
-                        <option value="1">Yes</option>
-                    </select>                
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Blood Pressure</label>
-                    <select class="custom-select" name="blood">
-                        <option value="0">Stable</option>
-                        <option value="1">High Blood Pressure</option>
-                    </select>                
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="diffBreath">Change in Appetide</label>
-                    <select class="custom-select" name="appetide">
-                        <option value="0">No Symptoms</option>
-                        <option value="1">Yes</option>
-                    </select>                
-                </div>
-            </div>        
-
+            <label style="color:white;" for="fever">Enter value of Fever: </label>
+            <input type="text" class="form-control" id="fever" name="fever" placeholder="For eg.15" required>
         </div>
 
         <div class="form-group">
-            <label for="model">Choose the model:</label>
-            <select class="form-control custom-select" id="model" name="model">
+            <label style="color:white;" for="fever">Choose Your Gender: </label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio1" name="gender" class="custom-control-input" value="0" required>
+                <label style="color:white;" class="custom-control-label" for="customRadio1">Male</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio2" name="gender" class="custom-control-input" value="1" required>
+                <label style="color:white;" class="custom-control-label" for="customRadio2">Female</label>
+            </div>
+        </div>
+        <hr>
+        <label style="color:white; font-style: italic;">If you have any Symptoms. Check the boxes..... </label>
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="cough" name="checks[]" value="cough">
+                <label style="color:white;" class="custom-control-label" for="cough">Cough</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="throat" name="checks[]" value="throat">
+                <label style="color:white;" class="custom-control-label" for="throat">Sore Throat</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="weakness" name="checks[]" value="weakness">
+                <label style="color:white;" class="custom-control-label" for="weakness">Feeling Weakness</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="diffBreath" name="checks[]" value="diffBreath">
+                <label style="color:white;" class="custom-control-label" for="diffBreath">Breathing Difficulty</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="drowsiness" name="checks[]" value="drowsiness">
+                <label style="color:white;" class="custom-control-label" for="drowsiness">Drowsiness Problem</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="pain" name="checks[]" value="pain">
+                <label style="color:white;" class="custom-control-label" for="pain">Pain in Chest</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="blood" name="checks[]" value="blood">
+                <label style="color:white;" class="custom-control-label" for="blood">Blood Pressure</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="appetide" name="checks[]" value="appetide">
+                <label style="color:white;" class="custom-control-label" for="appetide">Change in Appetide</label>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="form-group">
+            <label style="color:white;" for="diffBreath">Travel history(In last 3 months)</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="novisited" name="travel" class="custom-control-input" value="0" required>
+                <label style="color:white;" class="custom-control-label" for="novisited">No history</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="visited" name="travel" class="custom-control-input" value="1" required>
+                <label style="color:white;" class="custom-control-label" for="visited">Yes Visited Other Countries</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label style="color:white;" for="diffBreath">Symptoms Progressed</label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio3" name="symptoms" class="custom-control-input" value="0" required>
+                <label style="color:white;" class="custom-control-label" for="customRadio3">No Progress</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio4" name="symptoms" class="custom-control-input" value="1" required>
+                <label style="color:white;" class="custom-control-label" for="customRadio4">Yes, Progressing Continuously</label>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label style="color:white;" for="model">Choose the model:</label>
+            <select class="form-control custom-select" id="model" name="model" required>
                 <option value="random">Random Forest</option>
                 <option value="knn">KNN </option>
                 <option value="decision">Decision Tree </option>

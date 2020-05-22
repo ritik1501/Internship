@@ -13,37 +13,48 @@
   </div>
   {% endfor %}
 
+  <style>
+    body {
+        background: url('https://cdn.cjr.org/wp-content/uploads/2019/07/AdobeStock_100000042-e1563305717660-686x371.jpeg') no-repeat center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+</style>
+
  
       <div class="container"> 
-          <h2 class="text-center my-5">COVID-19 Self-Test</h2> 
+          <h2 class="text-center my-5" style="color:brown;">COVID-19 Self-Test</h2> 
           <form action="/home/test" method="POST">
           {% csrf_token %}
+          <label style="color:red;">Please fill all the values in between 1 to 20.. All fields are necessary</label>
           <div class="form-group">
-                <label for="name">Enter Name: </label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="For eg.Bharat">
+                <label style="color:white;" for="name">Enter Name: </label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="For eg.Bharat" required>
             </div>
             <div class="form-group">
-              <label for="fever">Enter value of Fever: </label>
-              <input type="text" class="form-control" id="fever" name="fever" placeholder="For eg.15">
-            </div>
-
-            <div class="form-group">
-                <label for="cough">Enter value of Cough: </label>
-                <input type="number" class="form-control" id="cough" name="cough" placeholder="For eg.15">
+              <label style="color:white;" for="fever">Enter value of Fever: </label>
+              <input type="text" class="form-control" id="fever" name="fever" placeholder="For eg.15" required>
             </div>
 
             <div class="form-group">
-              <label for="throat">Enter value of Sore Throat:</label>
-              <input type="number" class="form-control" id="throat" name="throat" placeholder="For eg.15">
+                <label style="color:white;" for="cough">Enter value of Cough: </label>
+                <input type="number" class="form-control" id="cough" name="cough" placeholder="For eg.15" required>
             </div>
 
             <div class="form-group">
-                <label for="diffBreath">Enter value of Breathing Difficulty</label>
-                <input type="number" class="form-control" id="diffBreath" name="diffBreath" placeholder="For eg.15">
+              <label style="color:white;" for="throat">Enter value of Sore Throat:</label>
+              <input type="number" class="form-control" id="throat" name="throat" placeholder="For eg.15" required>
             </div>
 
             <div class="form-group">
-                <label for="model">Choose the model:</label>
+                <label style="color:white;" for="diffBreath">Enter value of Breathing Difficulty</label>
+                <input type="number" class="form-control" id="diffBreath" name="diffBreath" placeholder="For eg.15" required>
+            </div>
+
+            <div class="form-group">
+                <label style="color:white;" for="model">Choose the model:</label>
                 <select class="form-control custom-select" id="model" name="model">
                   <option value="random">Random Forest</option>
                   <option value="knn">KNN </option>
